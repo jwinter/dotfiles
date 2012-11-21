@@ -1,5 +1,22 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
+PATH=$PATH:$HOME/bin
+alias bi='bundle install'
+alias be='bundle exec'
+alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
+alias e='/Applications/Emacs.app/Contents/MacOS/Emacs'
+alias ec='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n'
+alias memcached='memcached -m 512'
+alias memcached-status='echo stats | nc 127.0.0.1 11211'
+alias t-attach='tmux -S /tmp/jwintermux attach'
+function rtest() { 
+  time zeus testrb $* ; say -v zarvox "good job"
+}
+
+function runits() { 
+  time rake test:units ; say -v zarvox "all done" # zeus doesn't work here
+}
+
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -34,8 +51,10 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/Users/jwinter/.rvm/gems/ruby-1.9.3-p194/bin:/Users/jwinter/.rvm/gems/ruby-1.9.3-p194@global/bin:/Users/jwinter/.rvm/rubies/ruby-1.9.3-p194/bin:/Users/jwinter/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/jwinter/src/bin
+PATH=$PATH:$HOME/bin
 
 if [ -f `brew --prefix`/etc/autojump ]; then
   . `brew --prefix`/etc/autojump
 fi
+
+source $HOME/src/dotfiles/private_aliases.sh
