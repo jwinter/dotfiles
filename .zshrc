@@ -1,60 +1,11 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
-PATH=$PATH:$HOME/bin
 alias bi='bundle install'
 alias be='bundle exec'
-alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
-alias e='/Applications/Emacs.app/Contents/MacOS/Emacs'
-alias ec='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n'
-alias memcached='memcached -m 512'
-alias memcached-status='echo stats | nc 127.0.0.1 11211'
-alias t-attach='tmux -S /tmp/jwintermux attach'
-function rtest() { 
-  time zeus testrb $* ; say -v zarvox "good job"
-}
+alias ec="emacsclient -n"
+alias git-recent="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
+
 
 function runits() { 
   time rake test:units ; say -v zarvox "all done" # zeus doesn't work here
 }
 
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
-
-# Customize to your needs...
-PATH=$PATH:$HOME/bin
-
-if [ -f `brew --prefix`/etc/autojump ]; then
-  . `brew --prefix`/etc/autojump
-fi
-
-source $HOME/src/dotfiles/private_aliases.sh
+#source $HOME/src/dotfiles/private_aliases.sh
